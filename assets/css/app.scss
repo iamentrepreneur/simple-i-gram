@@ -1,0 +1,23 @@
+body {
+  display: flex;
+  justify-content: center;
+  .main {
+    width: 40rem;
+    .card-link {
+      .bi-heart-fill {
+        display: none;
+      }
+      &.like.active {
+        color: #dc3545;
+        .bi-heart-fill {
+          display: inline-block;
+        }
+        .bi-heart {
+          display: none;
+        }
+      }
+    }
+  }
+
+}
+

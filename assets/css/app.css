@@ -1,0 +1,21 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+body .main {
+  width: 40rem;
+}
+body .main .card-link .bi-heart-fill {
+  display: none;
+}
+body .main .card-link.like.active {
+  color: #dc3545;
+}
+body .main .card-link.like.active .bi-heart-fill {
+  display: inline-block;
+}
+body .main .card-link.like.active .bi-heart {
+  display: none;
+}
+
+/*# sourceMappingURL=app.css.map */
