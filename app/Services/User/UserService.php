@@ -16,6 +16,7 @@ class UserService implements UserServiceInterface
         $user->setEmail($data['email']);
         $user->setUserPassword($data['password']);
         $user->store();
+        Redirect::to('/login');
     }
 
     public function login(string $userName, string $userPassword): void

@@ -1,4 +1,6 @@
 <?php
+
+use App\Application\Alerts\Alert;
 use App\Application\Config\Config;
 use App\Application\Views\View;
 use App\Application\Alerts\Error;
@@ -15,6 +17,11 @@ use App\Application\Alerts\Error;
     <?php View::component('nav');?>
     <h2 class="mb-3">Регистрация</h2>
     <form action="/register" method="post">
+        <?php if(Alert::danger()):?>
+        <div class="alert alert-danger" role="alert">
+            <?= Alert::danger(true)?>
+        </div>
+        <?php endif;?>
         <div class="mb-3">
             <label for="name" class="form-label">Имя</label>
             <input type="text" name="name" class="form-control <?=Error::has('name') ? 'is-invalid' : ''?>" id="name" aria-describedby="emailHelp">

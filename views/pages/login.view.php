@@ -1,4 +1,6 @@
 <?php
+
+use App\Application\Alerts\Alert;
 use App\Application\Config\Config;
 use App\Application\Views\View;
 ?>
@@ -14,6 +16,11 @@ use App\Application\Views\View;
     <?php View::component('nav');?>
     <h2 class="mb-3">Авторизация</h2>
     <form action="/login" method="post">
+        <?php if(Alert::success()):?>
+            <div class="alert alert-success" role="alert">
+                <?= Alert::success(true)?>
+            </div>
+        <?php endif;?>
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">

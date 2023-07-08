@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Application\Alerts\Alert;
 use App\Application\Request\Request;
 use App\Application\Router\Redirect;
 use App\Services\User\UserService;
@@ -24,7 +25,10 @@ class UserController
         ]);
 
         if(!$request->validationStatus()) {
+            Alert::storeMessage('Проверьте правильность введеных полей', Alert::DANGER);
             Redirect::to('/register');
+        } else {
+            Alert::storeMessage('Успешная регистрация, можете авторизоваться', Alert::SUCCESS);
         }
 
         $this->service->register([
@@ -34,5 +38,8 @@ class UserController
             'password' => $request->post('password'),
             'passwordConfirm' => $request->post('passwordConfirm'),
         ]);
+
+
+        Redirect::to('/login');
     }
 }
