@@ -11,7 +11,7 @@ class GuestMiddleware extends Middleware
     public function handle(): void
     {
         if (Auth::check()) {
-            Redirect::to('/home');
+            Redirect::to('/');
         }
     }
 }

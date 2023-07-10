@@ -12,7 +12,7 @@ class Error implements ErrorInterface
     public static function list(): array
     {
         if (!isset(self::$errors)) {
-            self::$errors = json_decode($_COOKIE['errors'], true);
+            self::$errors = isset($_COOKIE['errors']) ? json_decode($_COOKIE['errors'], true) : [];
         }
         return self::$errors;
     }

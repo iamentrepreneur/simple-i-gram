@@ -1,4 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mt-2 mb-4">
+<?php
+use App\Application\Auth\Auth;
+?>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">iGram</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,9 +17,15 @@
                     <a class="nav-link" href="/profile">Профиль</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <a href="/login" class="btn btn-outline-success" >Войти</a>
-            </form>
+            <?php if(!Auth::check()):?>
+                <form class="d-flex" action="/login" method="post">
+                    <a href="/login" class="btn btn-outline-success" >Войти</a>
+                </form>
+            <?php else:?>
+                <form class="d-flex" action="/logout" method="post">
+                    <button type="submit" class="btn btn-outline-danger" >Выйти</button>
+                </form>
+            <?php endif;?>
         </div>
     </div>
 </nav>

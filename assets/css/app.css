@@ -1,8 +1,5 @@
-body {
-  display: flex;
-  justify-content: center;
-}
 body .main {
+  margin: 0 auto;
   width: 40rem;
 }
 body .main .card-link .bi-heart-fill {

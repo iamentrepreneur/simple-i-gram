@@ -25,10 +25,10 @@ class UserController
         ]);
 
         if(!$request->validationStatus()) {
-            Alert::storeMessage('Проверьте правильность введеных полей', Alert::DANGER);
+            Alert::storeMessage('Проверьте правильность введеных полей.', Alert::DANGER);
             Redirect::to('/register');
         } else {
-            Alert::storeMessage('Успешная регистрация, можете авторизоваться', Alert::SUCCESS);
+            Alert::storeMessage('Успешная регистрация, можете авторизоваться!', Alert::SUCCESS);
         }
 
         $this->service->register([
@@ -41,5 +41,33 @@ class UserController
 
 
         Redirect::to('/login');
+    }
+
+    public function login(Request $request): void
+    {
+        $errors = $request->validation([
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ]);
+
+        if(!$request->validationStatus()) {
+            Alert::storeMessage('Проверьте правильность введеных полей.', Alert::DANGER);
+            Redirect::to('/login');
+        }
+//        else {
+//            Alert::storeMessage('Успешная регистрация, можете авторизоваться!', Alert::SUCCESS);
+//        }
+        $auth = $this->service->login($request->post('email'), $request->post('password'));
+        if (!$auth) {
+            Redirect::to('/login');
+        } else {
+            Redirect::to('/');
+        }
+    }
+
+    public function logout(): void
+    {
+        $this->service->logout();
+
     }
 }

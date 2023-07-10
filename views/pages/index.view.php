@@ -4,16 +4,14 @@ use App\Application\Views\View;
 ?>
 
 <!doctype html>
-<html lang="<?=Config::get('app.css.lang')?>">
+<html class="h-100" lang="<?=Config::get('app.css.lang')?>">
 <head>
     <?php View::component('head');?>
     <title><?=$title?></title>
 </head>
-<body>
+<body class="d-flex flex-column h-100">
+<?php View::component('nav');?>
 <main class="main">
-    <?php View::component('nav');?>
-
-
     <div class="card mb-2">
         <img src="https://aflife.ru/wp-content/uploads/2023/03/php.png" class="card-img-top" alt="php">
         <div class="card-body">
@@ -53,5 +51,6 @@ use App\Application\Views\View;
     </div>
 </main>
 
+<?php View::component('footer');?>
 </body>
 </html>

@@ -7,14 +7,14 @@ use App\Application\Alerts\Error;
 ?>
 
 <!doctype html>
-<html lang="<?=Config::get('app.css.lang')?>">
+<html class="h-100" lang="<?=Config::get('app.css.lang')?>">
 <head>
     <?php View::component('head');?>
     <title><?=$title?></title>
 </head>
-<body>
+<body class="d-flex flex-column h-100">
+<?php View::component('nav');?>
 <main class="main">
-    <?php View::component('nav');?>
     <h2 class="mb-3">Регистрация</h2>
     <form action="/register" method="post">
         <?php if(Alert::danger()):?>
@@ -58,5 +58,6 @@ use App\Application\Alerts\Error;
     </form>
 </main>
 
+<?php View::component('footer');?>
 </body>
 </html>

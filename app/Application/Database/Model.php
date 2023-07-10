@@ -32,7 +32,6 @@ class Model extends Connection implements ModelInterface
             }
             return $this;
         }
-
     }
 
     public function store(): void
