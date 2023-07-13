@@ -4,15 +4,45 @@ namespace App\Application\Database;
 
 class Model extends Connection implements ModelInterface
 {
+    /**
+     * @var int
+     */
     protected int $id;
-    protected string $created_at;
-    protected string $updated_at;
+    /**
+     * @var string
+     */
+    protected ?string $created_at;
+
+    /**
+     * @var string
+     */
+    protected ?string $updated_at;
+    /**
+     * @var array
+     */
     protected array $fields = [];
 
+    /**
+     * @var string
+     */
     protected string $table;
 
+    /**
+     * @var array
+     */
     protected array $collection = [];
 
+    public function id(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $columns
+     * @param mixed $value
+     * @param bool $many
+     * @return array|bool|Model|$this
+     */
     public function find(string $columns, mixed $value, bool $many = false): array|bool|Model
     {
         $query = "SELECT * FROM `$this->table` WHERE `$columns` = :$columns LIMIT 1";
@@ -34,6 +64,9 @@ class Model extends Connection implements ModelInterface
         }
     }
 
+    /**
+     * @return void
+     */
     public function store(): void
     {
         $columns = implode(', ', array_map(function ($field) {
@@ -54,6 +87,10 @@ class Model extends Connection implements ModelInterface
 
     }
 
+    /**
+     * @param array $data
+     * @return void
+     */
     public function update(array $data): void
     {
         $keys = array_keys($data);
@@ -68,4 +105,12 @@ class Model extends Connection implements ModelInterface
         $data['id'] = $this->id;
         $stmt->execute($data);
     }
+    /**
+     * @return string
+     */
+    public function getCreatedAt(): ?string
+    {
+        return $this->created_at;
+    }
+
 }

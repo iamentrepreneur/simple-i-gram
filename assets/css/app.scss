@@ -4,6 +4,7 @@ body {
   .main {
     margin: 0 auto;
     width: 40rem;
+    padding-bottom: 100px;
     .card-link {
       .bi-heart-fill {
         display: none;
@@ -18,6 +19,21 @@ body {
         }
 
 
+      }
+    }
+    .bd-placeholder-img {
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+    .profile__avatar {
+      width: 200px;
+    }
+    .profile__info {
+      .profile__info--registered {
+        font-size: 12px;
+        font-weight: bold;
       }
     }
   }

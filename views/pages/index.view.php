@@ -7,13 +7,13 @@ use App\Application\Views\View;
 <html class="h-100" lang="<?=Config::get('app.css.lang')?>">
 <head>
     <?php View::component('head');?>
-    <title><?=$title?></title>
+    <title><?=$title?><?=$label?></title>
 </head>
 <body class="d-flex flex-column h-100">
 <?php View::component('nav');?>
 <main class="main">
     <div class="card mb-2">
-        <img src="https://aflife.ru/wp-content/uploads/2023/03/php.png" class="card-img-top" alt="php">
+        <img src="/assets/img/php.png" class="card-img-top" alt="php">
         <div class="card-body">
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
@@ -32,7 +32,7 @@ use App\Application\Views\View;
     </div>
 
     <div class="card mb-2">
-        <img src="https://aflife.ru/wp-content/uploads/2023/03/php.png" class="card-img-top" alt="php">
+        <img src="/assets/img/php.png" class="card-img-top" alt="php">
         <div class="card-body">
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>

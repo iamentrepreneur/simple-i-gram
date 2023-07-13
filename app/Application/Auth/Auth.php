@@ -36,4 +36,10 @@ class Auth implements AuthInterface
     {
         return self::$tokenColumn;
     }
+
+    public static function id(): ?int
+    {
+        self::check();
+        return self::$user->id();
+    }
 }

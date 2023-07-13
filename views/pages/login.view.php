@@ -11,12 +11,12 @@ use App\Application\Alerts\Error;
 <html class="h-100" lang="<?= Config::get('app.css.lang') ?>">
 <head>
     <?php View::component('head'); ?>
-    <title><?= $title ?></title>
+    <title><?= $title ?><?=$label?></title>
 </head>
 <body class="d-flex flex-column h-100">
 <?php View::component('nav'); ?>
 <main class="main">
-    <h2 class="mb-3">Авторизация</h2>
+    <h2 class="mb-3"><?= $title ?></h2>
     <form action="/login" method="post">
         <?php if (Alert::success()): ?>
             <div class="alert alert-success" role="alert">

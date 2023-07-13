@@ -1,6 +1,7 @@
 body .main {
   margin: 0 auto;
   width: 40rem;
+  padding-bottom: 100px;
 }
 body .main .card-link .bi-heart-fill {
   display: none;
@@ -13,6 +14,19 @@ body .main .card-link.like.active .bi-heart-fill {
 }
 body .main .card-link.like.active .bi-heart {
   display: none;
+}
+body .main .bd-placeholder-img {
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+body .main .profile__avatar {
+  width: 200px;
+}
+body .main .profile__info .profile__info--registered {
+  font-size: 12px;
+  font-weight: bold;
 }
 
 /*# sourceMappingURL=app.css.map */

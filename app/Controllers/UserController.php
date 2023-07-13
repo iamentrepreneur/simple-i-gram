@@ -54,9 +54,7 @@ class UserController
             Alert::storeMessage('Проверьте правильность введеных полей.', Alert::DANGER);
             Redirect::to('/login');
         }
-//        else {
-//            Alert::storeMessage('Успешная регистрация, можете авторизоваться!', Alert::SUCCESS);
-//        }
+
         $auth = $this->service->login($request->post('email'), $request->post('password'));
         if (!$auth) {
             Redirect::to('/login');

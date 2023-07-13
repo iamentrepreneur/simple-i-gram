@@ -35,6 +35,27 @@ class User extends Model
     /**
      * @var string
      */
+    protected ?string $avatar;
+
+    /**
+     * @return string
+     */
+    public function getAvatar(): string
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * @param string $avatar
+     */
+    public function setAvatar(string $avatar): void
+    {
+        $this->avatar = $avatar;
+    }
+
+    /**
+     * @var string
+     */
     protected string $email;
 
     /**
