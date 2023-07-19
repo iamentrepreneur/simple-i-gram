@@ -45,12 +45,18 @@ class Model extends Connection implements ModelInterface
      */
     public function find(string $columns, mixed $value, bool $many = false): array|bool|Model
     {
-        $query = "SELECT * FROM `$this->table` WHERE `$columns` = :$columns LIMIT 1";
+        $query = "SELECT * FROM `$this->table` WHERE `$columns` = :$columns";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute([$columns => $value]);
 
         if ($many) {
-            $this->collection = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            $items = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            foreach ($items as $item) {
+                foreach ($item as $key => $value) {
+                    $this->$key = $value;
+                }
+                $this->collection[] = clone $this;
+            }
             return $this->collection;
         } else {
             $entity = $stmt->fetch(\PDO::FETCH_ASSOC);
@@ -64,6 +70,18 @@ class Model extends Connection implements ModelInterface
         }
     }
 
+    public function all(): array
+    {
+        $items = $this->connect()->query("SELECT * FROM `$this->table` ORDER BY id DESC")->fetchAll(\PDO::FETCH_ASSOC);
+        foreach ($items as $item) {
+            foreach ($item as $key => $value) {
+                $this->$key = $value;
+            }
+            $this->collection[] = clone $this;
+        }
+        return $this->collection;
+    }
+    
     /**
      * @return void
      */

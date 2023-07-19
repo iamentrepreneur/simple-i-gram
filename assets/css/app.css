@@ -28,5 +28,11 @@ body .main .profile__info .profile__info--registered {
   font-size: 12px;
   font-weight: bold;
 }
+body .main .posts .card-img-top {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
 
 /*# sourceMappingURL=app.css.map */
