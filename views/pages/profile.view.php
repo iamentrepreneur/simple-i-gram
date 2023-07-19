@@ -3,9 +3,14 @@
 use App\Application\Alerts\Alert;
 use App\Application\Auth\Auth;
 use App\Application\Config\Config;
+use App\Application\Router\Redirect;
 use App\Application\Views\View;
 use App\Application\Alerts\Error;
 use App\Models\Post;
+
+if (!Auth::check()) {
+    Redirect::to('/login');
+}
 
 $user = Auth::user();
 $posts = (new Post())->find('user_id', $user->id(), true);
